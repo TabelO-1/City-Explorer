@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: ''
+    }
+  }
+  handleChange = (event) => {
+    let inputCity = event.target.value;
+    console.log(inputCity);
+    this.setState({city: inputCity});
+  }
+  render() {
+    return (
+      <div className="App">
+        <h1>City Explorer</h1>
+          <form>
+            Your City:<input name="input" onChange={this.handleChange}></input>
+            <button>Explore!</button>
+          </form>
+        <h3>Here's the map for: {this.state.city}</h3>
+      </div>
+    )
+  }
 }
 
 export default App;
