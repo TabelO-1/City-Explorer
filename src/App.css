@@ -1,16 +1,31 @@
 .App {
   text-align: center;
+  font-family: 'Times New Roman', Times, serif;
 }
-.App-header {
+#App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 5vmin);
   color: white;
+  margin-bottom: 0px;
 }
 #mapImg {
   border: 2px solid black;
+}
+#exploreButton {
+  background-color: white;
+}
+#formId {
+  background-color: lightgray;
+}
+#containerId {
+  background-color: lightgray;
+  text-align: center;
+}
+#errorId {
+  margin-bottom: 0px;
 }
