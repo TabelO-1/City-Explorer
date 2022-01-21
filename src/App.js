@@ -38,7 +38,7 @@ class App extends React.Component {
           <Container>
             <h3>Here's the map for: {this.state.location.display_name}</h3>
             <p>Lat/Long: {this.state.location.lat}/{this.state.location.lon}</p>
-            <Image/>
+            <Image id='mapImg' roundedCircle src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=12`} alt='Image load failed.'/>
           </Container>
         }
       </div>
