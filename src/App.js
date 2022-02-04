@@ -4,6 +4,7 @@ import "./App.css";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Alert from "react-bootstrap/Alert";
+import Weather from "./weather";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class App extends React.Component {
       showError: false,
       errorMessage: "",
       errorType: "",
+      errorType1: "",
+      weatherArr: [],
     };
   }
   handleChange = (event) => {
@@ -30,11 +33,31 @@ class App extends React.Component {
       this.setState({
         location: reponse.data[0],
       });
+      this.getWeather();
     } catch (error) {
       this.setState({
         showError: true,
         errorMessage: error.response.status + ": " + error.response.data.error,
         errorType: error.response.status,
+      });
+    }
+  };
+
+  getWeather = async () => {
+    const url = `http://127.0.0.1:3001/weather?lat=${this.state.location.lat}&lon=${this.state.location.lon}&searchQuery=${this.state.city}`;
+    console.log(url);
+    try {
+      let response = await axios.get(url);
+      console.log("Weather response: ", response.data);
+      this.setState({
+        weatherArr: response.data,
+      });
+    } catch (error) {
+      let errorResponse = await axios.get(url);
+      console.log(errorResponse);
+      this.setState({
+        showError: true,
+        errorMessage: error.response.status + ": " + error.response.data.error,
       });
     }
   };
@@ -60,6 +83,7 @@ class App extends React.Component {
               src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=12`}
               alt="Image load failed."
             />
+            <Weather weatherArr={this.state.weatherArr} />
           </Container>
         )}
         {this.state.showError && (

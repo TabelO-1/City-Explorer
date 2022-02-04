@@ -1,6 +1,8 @@
 .App {
+  background-color: lightgray;
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
+  border: 90px solid slateblue;
 }
 #App-header {
   background-color: #282c34;
@@ -28,4 +30,10 @@
 }
 #errorId {
   margin-bottom: 0px;
+}
+.forecast {
+  margin-bottom: 15px;
+  background-color: #282c34;
+  color: whitesmoke;
+  border: 3px solid whitesmoke
 }
