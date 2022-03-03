@@ -37,3 +37,10 @@
   color: whitesmoke;
   border: 3px solid whitesmoke
 }
+#center {
+  text-align: center;
+}
+
+#card6 {
+  margin-left: 100px;
+}
